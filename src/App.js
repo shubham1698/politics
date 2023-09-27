@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Analysis from "./Components/Analysis";
+import QueryCardView from "./Components/QueryCardView";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { MockPresidentData } from "./MockData/Data";
 
 function App() {
+  console.log(MockPresidentData[0].year);
+  const [userData, setUserData] = useState({
+
+    labels: MockPresidentData.map((yearData) => yearData.year),
+    datasets: [
+      {
+        label: MockPresidentData[0].presdient_name,
+        data: MockPresidentData.map((prezVoteData) => prezVoteData?.votes_won)
+      },{
+        label: MockPresidentData[1].presdient_name,
+        data: MockPresidentData.map((prezVoteData) => prezVoteData.votes_won  ),
+        backgroundColor: "rgba(255, 99, 132, 0.2)", // Specify the color for this bar
+        borderColor: "rgba(255, 99, 132, 1)"
+      }
+    ],
+  });
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <header className="App-header">
+            <QueryCardView />
+          </header>
+        </Route>
+        <Route path="/Analysis/:queryNumber">
+          <Analysis chartData={userData} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
