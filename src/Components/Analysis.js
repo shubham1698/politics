@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 Chart.register(...registerables);
 
@@ -14,15 +13,10 @@ export default function Analysis({ chartData }) {
   };
   return (
     <div>
-      <div className="graphDimen">
+      <div className="graphDimen" >
         {isBarChart ? <Bar data={chartData} /> : <Line data={chartData} />}
-        <div             className="switchBtn">
-          <Button
-
-            variant="contained"
-            value="Click"
-            onClick={switchGraphType}
-          >
+        <div className="switchBtn">
+          <Button variant="contained" value="Click" onClick={switchGraphType}>
             {isBarChart ? "View Line Chart" : "View Bar Chart"}
           </Button>
         </div>
