@@ -31,24 +31,41 @@ export default function QueryCardView() {
     },
   ];
   return (
-    <Box sx={{ minWidth: 420 }}>
+    <Box
+      sx={{
+        width: '500px',
+        height: "80px",
+        backgroundColor: "white",
+        borderRadius: "10px",
+        marginTop: "20%",
+        marginLeft: "34%",
+      }}
+    >
+      <Box sx={{
+        width: '400px',
+        height: "60px",
+        backgroundColor: "white",
+        borderRadius: "10px"
+      }}>
       <FormControl
         fullWidth
         sx={{
-          background: "white",
-          borderRadius: "10px",
+          marginTop:'10px',
+          marginBottom:'10px',
+          marginLeft:'50px'
         }}
       >
+        
         <InputLabel
           id="demo-simple-select-label"
-          style={{ color: "black", textAlign: "center", borderRadius: "10px" }}
+          sx={{ color: "black", textAlign: "center", borderRadius: "10px" }}
         >
           Lets Analyze Political Trends
         </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          label="Age"
+          label="Lets Analyze Political Trends"
         >
           {queryList.map((queryItem) => (
             <MenuItem key={queryItem.number} value={queryItem.number}>
@@ -59,6 +76,8 @@ export default function QueryCardView() {
           ))}
         </Select>
       </FormControl>
+      </Box>
+ 
     </Box>
   );
 }
