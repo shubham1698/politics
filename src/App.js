@@ -19,16 +19,17 @@ function App() {
     datasets: [
       {
         label: MockPresidentData[0].presdient_name,
-        data: MockPresidentData.map((prezVoteData) => prezVoteData?.votes_won)
-      },{
+        data: MockPresidentData.map((prezVoteData) => prezVoteData?.votes_won),
+      },
+      {
         label: MockPresidentData[1].presdient_name,
-        data: MockPresidentData.map((prezVoteData) => prezVoteData.votes_won  ),
+        data: MockPresidentData.map((prezVoteData) => prezVoteData.votes_won),
         backgroundColor: "rgba(255, 99, 132, 0.2)", // Specify the color for this bar
-        borderColor: "rgba(255, 99, 132, 1)"
-      }
+        borderColor: "rgba(255, 99, 132, 1)",
+      },
     ],
   });
-  
+
   return (
     <Router>
       <Switch>
