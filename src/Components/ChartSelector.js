@@ -10,17 +10,34 @@ export default function ChartSelector({ chartData, currentLocation }) {
 
   switch (currentLocation) {
     case "/Analysis/1": {
-      console.log("HERE");
+      console.log("HERE1");
       chatComponent = <Line data={chartData} />;
+      break;
+    }
+    case "/Analysis/2": {
+      console.log("HERE2",chartData);
+      chatComponent = <Line data={chartData} />;
+      break;
     }
     case "/Analysis/3": {
-      console.log("HERE", chartData);
+      console.log("HERE3", chartData);
       chatComponent = (
         <div>
           <Line data={chartData.chartDataOne} />
           <Line data={chartData.chartDataTwo} />
         </div>
       );
+      break;
+    }
+    case "/Analysis/4": {
+      console.log("HERE4", chartData);
+      chatComponent = (
+        <div>
+          <Line data={chartData.chartDataOne} />
+          <Line data={chartData.chartDataTwo} />
+        </div>
+      );
+      break;
     }
   }
 

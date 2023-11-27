@@ -19,7 +19,7 @@ export default function QueryCardView() {
     },
     {
       number: 3,
-      content: "Query-3(Gun Violence Impact on Elections",
+      content: "Query-3(Gun Violence Impact on Elections)",
     },
     {
       number: 4,
