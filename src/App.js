@@ -11,21 +11,6 @@ import { Box } from "@mui/material";
 import HelpPage from "./Components/HelpPage";
 
 function App() {
-  console.log(MockCandidateData[0].year);
-  const [userData, setUserData] = useState({
-    labels: MockCandidateData.map((yearData) => yearData.year),
-    datasets: [
-      {
-        label: "Candidate's Average Age",
-        data: MockCandidateData.map((element) => element?.candidate_age),
-      },
-      {
-        label: "Voter's Average Age",
-        data: MockVoterData.map((element) => element?.voter_age),
-      },
-    ],
-  });
-
   return (
     <Router>
       <Switch>
@@ -43,7 +28,7 @@ function App() {
           </Box>
         </Route>
         <Route path="/Analysis/:queryNumber">
-          <Analysis chartData={userData} />
+          <Analysis />
         </Route>
         <Route path="/HelpPage">
           <HelpPage />

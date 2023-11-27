@@ -10,7 +10,7 @@ import {
   InputLabel,
   FormControl,
 } from "@mui/material";
-import { PresidentDataList } from "../Data/PrezidentListData";
+import { sectorArray } from "../Data/SectorData";
 import { USAStateData } from "../Data/UsaStateList";
 
 export default function QueryParamSelector(props) {
@@ -23,11 +23,12 @@ export default function QueryParamSelector(props) {
     onDataRequestedStateChange,
   } = obj;
 
-  const [isStateorPrezSelected, updateSelectedStateorPrez] = useState(false);
+  const [selectedThirdPara, updateSelectedThirdParam] = useState('');
 
-  const updateSelection = () => {
-    updateSelectedStateorPrez(!isStateorPrezSelected);
+  const updateSelectedThirdParamHandle = (event) => {
+    updateSelectedThirdParam(event.target.value);
   };
+
 
   const [selectedMinDate, updateSelectedMinDate] = useState();
 
@@ -42,11 +43,13 @@ export default function QueryParamSelector(props) {
   };
 
   const onHandleSubmitAction = () => {
-    console.log("Selection",isStateorPrezSelected)
-    if (isStateorPrezSelected && selectedMinDate < selectedMaxDate) {
-      onDataRequestedStateChange(true);
+    console.log(selectedThirdPara)
+    if (selectedThirdPara!=="" && selectedMinDate < selectedMaxDate) {
+      console.log("truth")
+      onDataRequestedStateChange(true, selectedMinDate, selectedMaxDate,selectedThirdPara);
     } else {
-      onDataRequestedStateChange(false);
+      console.log("falsely")
+      onDataRequestedStateChange(false, "", "", "");
     }
   };
   return (
@@ -82,19 +85,20 @@ export default function QueryParamSelector(props) {
         <FormControl sx={{ width: 300, justifyContent: "center" }}>
           <InputLabel id="demo-simple-select-label">
             {queryNumber == "/Analysis/1"
-              ? "Select the President"
+              ? "Select the Sector"
               : "Select the State"}
           </InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            label="Select the President"
-            onChange={updateSelection}
+            label="Select the Sector"
+            value={selectedThirdPara}
+            onChange={updateSelectedThirdParamHandle}
           >
             {queryNumber == "/Analysis/1"
-              ? PresidentDataList.map((queryItem) => (
-                  <MenuItem key={queryItem.id} value={queryItem.president_name}>
-                    {queryItem.president_name}
+              ? sectorArray.map((queryItem) => (
+                  <MenuItem key={queryItem.id} value={queryItem.sector_name}>
+                    {queryItem.sector_name}
                   </MenuItem>
                 ))
               : USAStateData.map((queryItem) => (
