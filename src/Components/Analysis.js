@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import dayjs from "dayjs";
-import Button from "@mui/material/Button";
 import QueryParamSelector from "./QueryParamSelector";
 import Status from "./Status";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import ChartSelector from "./ChartSelector";
 import { QueryOneAxios } from "../Axios/QueryOneAxios";
 import { QueryThreeAxios } from "../Axios/QueryThreeAxios";
+import { QueryFourAxios } from "../Axios/QueryFourAxios";
+import { QueryTwoAxios } from "../Axios/QueryTwoAxios";
 
 export default function Analysis() {
   const location = useLocation();
@@ -24,16 +24,39 @@ export default function Analysis() {
     end_date,
     sector
   ) => {
-    console.log(dataRequestedState);
+    console.log(location.pathname);
     if (isReadyToRequestData) {
-      console.log("Reacged");
-      if (location == "/Analysis/1") {
+      console.log("Reacged", location.pathname);
+      if (location.pathname === "/Analysis/1") {
         QueryOneAxios(start_date, end_date, sector)
           .then((response) => {
             updateChartData(response);
             console.log(response);
             setDataRequestedState(!dataRequestedState);
-            console.log("After", dataRequestedState);
+            console.log("After 1", dataRequestedState);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (location.pathname === "/Analysis/4") {
+        QueryFourAxios(start_date, end_date, sector)
+          .then((response) => {
+            updateChartData(response);
+            console.log(response);
+            setDataRequestedState(!dataRequestedState);
+            console.log("After 4", dataRequestedState);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (location.pathname === "/Analysis/2") {
+        console.log("statenmae--->",sector);
+        QueryTwoAxios(sector)
+          .then((response) => {
+            updateChartData(response);
+            console.log(response);
+            setDataRequestedState(!dataRequestedState);
+            console.log("After 2", dataRequestedState);
           })
           .catch((error) => {
             console.log(error);
@@ -44,7 +67,7 @@ export default function Analysis() {
             updateChartData(response);
             console.log(response);
             setDataRequestedState(!dataRequestedState);
-            console.log("After", dataRequestedState);
+            console.log("After 3", dataRequestedState);
           })
           .catch((error) => {
             console.log(error);

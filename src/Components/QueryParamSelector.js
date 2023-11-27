@@ -23,12 +23,11 @@ export default function QueryParamSelector(props) {
     onDataRequestedStateChange,
   } = obj;
 
-  const [selectedThirdPara, updateSelectedThirdParam] = useState('');
+  const [selectedThirdPara, updateSelectedThirdParam] = useState("");
 
   const updateSelectedThirdParamHandle = (event) => {
     updateSelectedThirdParam(event.target.value);
   };
-
 
   const [selectedMinDate, updateSelectedMinDate] = useState();
 
@@ -43,13 +42,33 @@ export default function QueryParamSelector(props) {
   };
 
   const onHandleSubmitAction = () => {
-    console.log(selectedThirdPara)
-    if (selectedThirdPara!=="" && selectedMinDate < selectedMaxDate) {
-      console.log("truth")
-      onDataRequestedStateChange(true, selectedMinDate, selectedMaxDate,selectedThirdPara);
-    } else {
-      console.log("falsely")
-      onDataRequestedStateChange(false, "", "", "");
+    console.log(selectedThirdPara);
+    if (queryNumber != "/Analysis/2") {
+      if (selectedThirdPara !== "" && selectedMinDate < selectedMaxDate) {
+        console.log("truth");
+        onDataRequestedStateChange(
+          true,
+          selectedMinDate,
+          selectedMaxDate,
+          selectedThirdPara
+        );
+      } else {
+        console.log("falsely");
+        onDataRequestedStateChange(false, "", "", "");
+      }
+    }else{
+      if (selectedThirdPara !== "") {
+        console.log("truth");
+        onDataRequestedStateChange(
+          true,
+          selectedMinDate,
+          selectedMaxDate,
+          selectedThirdPara
+        );
+      } else {
+        console.log("falsely");
+        onDataRequestedStateChange(false, "", "", "");
+      }
     }
   };
   return (
@@ -62,26 +81,29 @@ export default function QueryParamSelector(props) {
           marginTop: "50px",
         }}
       >
-        <DatePicker
-          views={["year"]}
-          label="Start Year"
-          minDate={minDate}
-          maxDate={maxDate}
-          onYearChange={updateMinDate}
-          animateYearScrolling
-          sx={{ marginRight: "50px" }}
-        />
+        {queryNumber != "/Analysis/2" ? (
+          <>
+            <DatePicker
+              views={["year"]}
+              label="Start Year"
+              minDate={minDate}
+              maxDate={maxDate}
+              onYearChange={updateMinDate}
+              animateYearScrolling
+              sx={{ marginRight: "50px" }}
+            />
 
-        <DatePicker
-          views={["year"]}
-          label="End Year"
-          minDate={minDate}
-          maxDate={maxDate}
-          onYearChange={updateMaxDate}
-          sx={{ marginRight: "50px" }}
-          animateYearScrolling
-        />
-
+            <DatePicker
+              views={["year"]}
+              label="End Year"
+              minDate={minDate}
+              maxDate={maxDate}
+              onYearChange={updateMaxDate}
+              sx={{ marginRight: "50px" }}
+              animateYearScrolling
+            />
+          </>
+        ) : null}
         <FormControl sx={{ width: 300, justifyContent: "center" }}>
           <InputLabel id="demo-simple-select-label">
             {queryNumber == "/Analysis/1"
