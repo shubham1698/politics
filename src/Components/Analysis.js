@@ -51,7 +51,7 @@ export default function Analysis() {
             console.log(error);
           });
       } else if (location.pathname === "/Analysis/2") {
-        console.log("statenmae--->",sector);
+        console.log("statenmae--->", sector);
         QueryTwoAxios(sector)
           .then((response) => {
             updateChartData(response);
@@ -79,18 +79,17 @@ export default function Analysis() {
 
   return (
     <Box
-    sx={{
-      width: "100%",
-      height:'100vh',
-      backgroundColor:`rgb(30, 41, 56)`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        maxheight:"100vh",
+        backgroundColor: `rgb(30, 41, 56)`,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <QueryParamSelector
         obj={{
           queryNumber: location.pathname,

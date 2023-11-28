@@ -11,7 +11,7 @@ export const QueryOneAxios = (start_date, end_date, sector) => {
     axios
       .get("http://127.0.0.1:5000/query1", { params: queryParams })
       .then((response) => {
-        const data_array = response.data?.data_array;
+        const data_array = response.data.data;
         console.log("Received data_array:", data_array);
         if (Array.isArray(data_array)) {
           console.log("Received data_array:", data_array);
