@@ -8,6 +8,7 @@ import { QueryOneAxios } from "../Axios/QueryOneAxios";
 import { QueryThreeAxios } from "../Axios/QueryThreeAxios";
 import { QueryFourAxios } from "../Axios/QueryFourAxios";
 import { QueryTwoAxios } from "../Axios/QueryTwoAxios";
+import { Box } from "@mui/material";
 
 export default function Analysis() {
   const location = useLocation();
@@ -77,7 +78,19 @@ export default function Analysis() {
   };
 
   return (
-    <div>
+    <Box
+    sx={{
+      width: "100%",
+      height:'100vh',
+      backgroundColor:`rgb(30, 41, 56)`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
       <QueryParamSelector
         obj={{
           queryNumber: location.pathname,
@@ -99,6 +112,6 @@ export default function Analysis() {
           <div className="switchBtn"></div>
         </div>
       )}
-    </div>
+    </Box>
   );
 }

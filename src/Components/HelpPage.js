@@ -20,7 +20,19 @@ export default function HelpPage() {
   ];
 
   return (
-    <>
+    <Box
+      sx={{
+        width: "100%",
+        height:'100vh',
+        backgroundColor:`rgb(30, 41, 56)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Carousel
         indicatorIconButtonProps={{
           style: {
@@ -29,24 +41,19 @@ export default function HelpPage() {
         }}
         sx={{
           width: "1000px",
-          height: "500px",
-          marginLeft: "18%",
-          marginTop: "10%",
+          height: "500px"
         }}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} />
         ))}
       </Carousel>
-      <Link to='/'>
-      <Button
-        variant="contained"
-        sx={{ marginLeft:'45%'}}
-      >
-        Lets Get Cracking
-      </Button>
+      <Link to="/">
+        <Button variant="contained">
+          Lets Get Cracking
+        </Button>
       </Link>
-    </>
+    </Box>
   );
 }
 function Item(props) {

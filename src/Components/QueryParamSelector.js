@@ -56,7 +56,7 @@ export default function QueryParamSelector(props) {
         console.log("falsely");
         onDataRequestedStateChange(false, "", "", "");
       }
-    }else{
+    } else {
       if (selectedThirdPara !== "") {
         console.log("truth");
         onDataRequestedStateChange(
@@ -76,9 +76,8 @@ export default function QueryParamSelector(props) {
       <Box
         sx={{
           display: "flex",
-          width: "auto",
+          width: "100%",
           justifyContent: "space-evenly",
-          marginTop: "50px",
         }}
       >
         {queryNumber != "/Analysis/2" ? (
@@ -90,7 +89,21 @@ export default function QueryParamSelector(props) {
               maxDate={maxDate}
               onYearChange={updateMinDate}
               animateYearScrolling
-              sx={{ marginRight: "50px" }}
+              sx={{
+                marginRight: "50px",
+                "& input": {
+                  color: "white",
+                },
+                "& .MuiInputLabel-root": {
+                  color: "white",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "white",
+                },
+                "& .MuiSvgIcon-root": {
+                  color: "white",
+                },
+              }}
             />
 
             <DatePicker
@@ -99,13 +112,32 @@ export default function QueryParamSelector(props) {
               minDate={minDate}
               maxDate={maxDate}
               onYearChange={updateMaxDate}
-              sx={{ marginRight: "50px" }}
+              sx={{
+                marginRight: "50px",
+                "& input": {
+                  color: "white",
+                },
+                "& .MuiInputLabel-root": {
+                  color: "white",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "white",
+                },
+                "& .MuiSvgIcon-root": {
+                  color: "white",
+                },
+              }}
               animateYearScrolling
             />
           </>
         ) : null}
         <FormControl sx={{ width: 300, justifyContent: "center" }}>
-          <InputLabel id="demo-simple-select-label">
+          <InputLabel
+            id="demo-simple-select-label"
+            sx={{
+              color: "white",
+            }}
+          >
             {queryNumber == "/Analysis/1"
               ? "Select the Sector"
               : "Select the State"}
@@ -115,7 +147,21 @@ export default function QueryParamSelector(props) {
             id="demo-simple-select"
             label="Select the Sector"
             value={selectedThirdPara}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "white",
+              },
+              "& .MuiSvgIcon-root": {
+                color: "white",
+              },
+            }}
             onChange={updateSelectedThirdParamHandle}
+            renderValue={(selected) => (
+              <div style={{ color: 'white' }}>{selected}</div>
+            )}
           >
             {queryNumber == "/Analysis/1"
               ? sectorArray.map((queryItem) => (
@@ -133,7 +179,6 @@ export default function QueryParamSelector(props) {
         <Button
           variant="contained"
           value="Click"
-          sx={{ direction: "flex", marginTop: "5px", height: "40px" }}
           onClick={onHandleSubmitAction}
         >
           Submit

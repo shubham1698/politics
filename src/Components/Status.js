@@ -9,10 +9,10 @@ export default function Status(props) {
       sx={{
         display: "flex",
         justifyContent: "center",
-        marginTop:'50px'
+        marginTop: "50px",
       }}
     >
-      <Typography variant="h3">{props.currentStatus}</Typography>
+      <Typography variant="h3" sx={{color:"white"}}>{props.currentStatus}</Typography>
     </Box>
   );
 }

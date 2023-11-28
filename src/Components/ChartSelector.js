@@ -7,24 +7,43 @@ export default function ChartSelector({ chartData, currentLocation }) {
   console.log(currentLocation);
 
   let chatComponent;
-
+  const options = {
+    scales: {
+      x: {
+        grid: {
+          color: "grey", // Change X axis grid color
+        },
+        ticks: {
+          color: "white", // Change X axis ticks color
+        },
+      },
+      y: {
+        grid: {
+          color: "grey", // Change Y axis grid color
+        },
+        ticks: {
+          color: "white", // Change Y axis ticks color
+        },
+      },
+    },
+  };
   switch (currentLocation) {
     case "/Analysis/1": {
       console.log("HERE1");
-      chatComponent = <Line data={chartData} />;
+      chatComponent = <Line data={chartData} options={options} />;
       break;
     }
     case "/Analysis/2": {
-      console.log("HERE2",chartData);
-      chatComponent = <Line data={chartData} />;
+      console.log("HERE2", chartData);
+      chatComponent = <Line data={chartData} options={options} />;
       break;
     }
     case "/Analysis/3": {
       console.log("HERE3", chartData);
       chatComponent = (
         <div>
-          <Line data={chartData.chartDataOne} />
-          <Line data={chartData.chartDataTwo} />
+          <Line data={chartData.chartDataOne} options={options} />
+          <Line data={chartData.chartDataTwo} options={options} />
         </div>
       );
       break;
@@ -33,8 +52,8 @@ export default function ChartSelector({ chartData, currentLocation }) {
       console.log("HERE4", chartData);
       chatComponent = (
         <div>
-          <Line data={chartData.chartDataOne} />
-          <Line data={chartData.chartDataTwo} />
+          <Line data={chartData.chartDataOne} options={options} />
+          <Line data={chartData.chartDataTwo} options={options} />
         </div>
       );
       break;
