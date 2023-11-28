@@ -77,6 +77,7 @@ export default function QueryParamSelector(props) {
         sx={{
           display: "flex",
           width: "100%",
+          marginTop:"100px",
           justifyContent: "space-evenly",
         }}
       >

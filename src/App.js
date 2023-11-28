@@ -10,7 +10,7 @@ import AboutUs from "./Components/AboutUs";
 
 function App() {
   return (
-    <Router>
+    <Router >
       <Switch>
         <Route exact path="/">
           <Box
