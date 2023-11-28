@@ -1,14 +1,12 @@
-import { useState } from "react";
 import "./App.css";
 import Analysis from "./Components/Analysis";
-import Help from "./Components/HelpButton";
 import QueryCardView from "./Components/QueryCardView";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { MockPresidentData } from "./Data/Data";
-import { MockCandidateData, MockVoterData } from "./Data/QueryTwoMockData";
 import backgroundWallpaper from "./Assets/LandingPage.jpg";
 import { Box } from "@mui/material";
 import HelpPage from "./Components/HelpPage";
+import NavBar from "./Components/NavBar";
+import AboutUs from "./Components/AboutUs";
 
 function App() {
   return (
@@ -23,15 +21,21 @@ function App() {
               backgroundSize: "cover",
             }}
           >
-            <Help />
+            <NavBar />
             <QueryCardView />
           </Box>
         </Route>
         <Route path="/Analysis/:queryNumber">
+          <NavBar />
           <Analysis />
         </Route>
         <Route path="/HelpPage">
+          <NavBar />
           <HelpPage />
+        </Route>
+        <Route path="/AboutPage">
+          <NavBar />
+          <AboutUs />
         </Route>
       </Switch>
     </Router>

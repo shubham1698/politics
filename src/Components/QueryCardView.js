@@ -39,6 +39,7 @@ export default function QueryCardView() {
         borderRadius: "10px",
         marginTop: "20%",
         marginLeft: "34%",
+        border: '5px solid black'
       }}
     >
       <Box sx={{
