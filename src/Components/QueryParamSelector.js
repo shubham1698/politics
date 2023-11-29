@@ -43,7 +43,7 @@ export default function QueryParamSelector(props) {
 
   const onHandleSubmitAction = () => {
     console.log(selectedThirdPara);
-    if (queryNumber != "/Analysis/2") {
+    if (queryNumber != "/Analysis/2" && queryNumber != "/Analysis/5") {
       if (selectedThirdPara !== "" && selectedMinDate < selectedMaxDate) {
         console.log("truth");
         onDataRequestedStateChange(
@@ -77,11 +77,11 @@ export default function QueryParamSelector(props) {
         sx={{
           display: "flex",
           width: "100%",
-          marginTop:"100px",
+          marginTop: "100px",
           justifyContent: "space-evenly",
         }}
       >
-        {queryNumber != "/Analysis/2" ? (
+        {queryNumber != "/Analysis/2" && queryNumber != "/Analysis/5" ? (
           <>
             <DatePicker
               views={["year"]}
@@ -161,7 +161,7 @@ export default function QueryParamSelector(props) {
             }}
             onChange={updateSelectedThirdParamHandle}
             renderValue={(selected) => (
-              <div style={{ color: 'white' }}>{selected}</div>
+              <div style={{ color: "white" }}>{selected}</div>
             )}
           >
             {queryNumber == "/Analysis/1"

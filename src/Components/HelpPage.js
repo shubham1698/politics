@@ -22,6 +22,7 @@ export default function HelpPage() {
   return (
     <Box
       sx={{
+        position:"fixed",
         width: "100%",
         height:'100vh',
         backgroundColor:`rgb(30, 41, 56)`,

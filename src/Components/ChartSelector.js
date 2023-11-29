@@ -52,8 +52,28 @@ export default function ChartSelector({ chartData, currentLocation }) {
       console.log("HERE4", chartData);
       chatComponent = (
         <div>
-          <Line data={chartData.chartDataOne} options={options} />
+          <Bar data={chartData.chartDataOne} options={options} />
           <Line data={chartData.chartDataTwo} options={options} />
+        </div>
+      );
+      break;
+    }
+    case "/Analysis/5": {
+      console.log("HERE5", chartData);
+      chatComponent = (
+        <div>
+          <Bar data={chartData.chartDataOne} options={options} />;
+          <Line data={chartData.chartDataTwo} options={options} />
+        </div>
+      );
+      break;
+    }
+    case "/Analysis/6": {
+      console.log("HERE6", chartData);
+      chatComponent = (
+        <div>
+          <Line data={chartData.chartDataOne} options={options} />
+          <Bar data={chartData.chartDataTwo} options={options} />;
         </div>
       );
       break;
