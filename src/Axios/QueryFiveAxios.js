@@ -16,26 +16,26 @@ export const QueryFiveAxios = (state_name) => {
 
         console.log("-->", state_vote);
 
-        const democratArray = [];
-        const republicanArray = [];
+        // const democratArray = [];
+        // const republicanArray = [];
 
-        state_vote.forEach((element) => {
-          if (element.PARTYNAME === "DEMOCRAT") {
-            democratArray.push(element);
-          } else {
-            republicanArray.push(element);
-          }
-        });
+        // state_vote.forEach((element) => {
+        //   if (element.PARTYNAME === "DEMOCRAT") {
+        //     democratArray.push(element);
+        //   } else {
+        //     republicanArray.push(element);
+        //   }
+        // });
         const chartDataOne = {
           labels: state_vote?.map((element) => element.YEAR),
           datasets: [
             {
-              label: "Republican Party",
-              data: democratArray?.map((element) => element?.TOTALVOTES),
+              label: "Democrat Party",
+              data: state_vote?.map((element) => element?.DEMOCRAT_VOTE_PERCENTAGE),
             },
             {
-              label: "Democrat Party",
-              data: republicanArray?.map((element) => element?.TOTALVOTES),
+              label: "Republican Party",
+              data: state_vote?.map((element) => element?.REPUBLICAN_VOTE_PERCENTAGE),
             },
           ],
         };
