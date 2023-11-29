@@ -13,30 +13,31 @@ export const QueryFourAxios = (start_date, end_date, state_name) => {
       .then((response) => {
         console.log(response.data);
         const candidate_data = response.data.data_graph1;
-        const winnerArray = [];
-        const loserArray = [];
+        const republicanArray = [];
+        const democratArray = [];
 
         candidate_data.forEach((element) => {
-          if (element.WINNER === "Y") {
-            winnerArray.push(element);
+          if (element.PARTY === "REPUBLICAN") {
+            republicanArray.push(element);
           } else {
-            loserArray.push(element);
+            democratArray.push(element);
           }
         });
+        console.log("checking-->", candidate_data);
         const chartDataOne = {
-          labels: candidate_data?.map((element) => {
+          labels: republicanArray?.map((element) => {
             return element.YEAR;
           }),
           datasets: [
             {
-              label: "Winning Candidate Popular Percentage",
-              data: winnerArray?.map(
+              label: "Democrat Party",
+              data: democratArray?.map(
                 (element) => element?.POPULAR_VOTE_PERCENTAGE
               ),
             },
             {
-              label: "Losing Candidate Popular Percentage",
-              data: loserArray?.map(
+              label: "Republican Party",
+              data: republicanArray?.map(
                 (element) => element?.POPULAR_VOTE_PERCENTAGE
               ),
             },

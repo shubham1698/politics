@@ -30,7 +30,7 @@ export const QueryThreeAxios = (start_date, end_date, state_name) => {
           console.log("checking-->",candidate_vote_chart_data);
           const chartDataTwo = {
             labels: candidate_vote_chart_data?.map((element) => {
-              return element.YEAR+"("+element.RULING_CANDIDATE+")";
+              return element.YEAR+"("+element.RULING_PARTY+")";
             }),
             datasets: [
               {
