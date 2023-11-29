@@ -12,16 +12,32 @@ export const QueryFourAxios = (start_date, end_date, state_name) => {
       .get("http://127.0.0.1:5000/query4", { params: queryParams })
       .then((response) => {
         console.log(response.data);
-        const gun_violence_chart_data = response.data.data_graph1;
+        const candidate_data = response.data.data_graph1;
+        const winnerArray = [];
+        const loserArray = [];
+
+        candidate_data.forEach((element) => {
+          if (element.WINNER === "Y") {
+            winnerArray.push(element);
+          } else {
+            loserArray.push(element);
+          }
+        });
         const chartDataOne = {
-          labels: gun_violence_chart_data?.map((element) => {
+          labels: candidate_data?.map((element) => {
             return element.YEAR;
           }),
           datasets: [
             {
-              label: "State",
-              data: gun_violence_chart_data?.map(
-                (element) => element?.DEATHS_PER_100000
+              label: "Winning Candidate Popular Percentage",
+              data: winnerArray?.map(
+                (element) => element?.POPULAR_VOTE_PERCENTAGE
+              ),
+            },
+            {
+              label: "Losing Candidate Popular Percentage",
+              data: loserArray?.map(
+                (element) => element?.POPULAR_VOTE_PERCENTAGE
               ),
             },
           ],
@@ -33,26 +49,24 @@ export const QueryFourAxios = (start_date, end_date, state_name) => {
         const merchantExportArray = [];
         const commercialImportArray = [];
         const merchantImportArray = [];
-        
+
         chart_two_data.forEach((element) => {
           if (
             element.INDICATOR ===
             "Commercial services exports by sector and partner – annual"
           ) {
             commercialExportArray.push(element);
-          }
-          else if (
-            element.INDICATOR === "Merchandise exports by product group – annual"
+          } else if (
+            element.INDICATOR ===
+            "Merchandise exports by product group – annual"
           ) {
             merchantExportArray.push(element);
-          }
-          else if (
-            element.INDICATOR === "Merchandise imports by product group – annual"
+          } else if (
+            element.INDICATOR ===
+            "Merchandise imports by product group – annual"
           ) {
             merchantImportArray.push(element);
-          }
-          else 
-           {
+          } else {
             commercialImportArray.push(element);
           }
         });
