@@ -14,7 +14,7 @@ import { Box } from "@mui/material";
 
 export default function Analysis() {
   const location = useLocation();
-  const minYear = dayjs("1990-01-01");
+  const minYear = dayjs("1965-01-01");
   const maxYear = dayjs("2023-01-01");
 
   const [chartData, updateChartData] = useState({});
@@ -54,7 +54,7 @@ export default function Analysis() {
           });
       } else if (location.pathname === "/Analysis/2") {
         console.log("statenmae--->", sector);
-        QueryTwoAxios(sector)
+        QueryTwoAxios(start_date, end_date, sector)
           .then((response) => {
             updateChartData(response);
             console.log(response);
@@ -66,7 +66,7 @@ export default function Analysis() {
           });
       } else if (location.pathname === "/Analysis/5") {
         console.log("statenmae5--->", sector);
-        QueryFiveAxios(sector)
+        QueryFiveAxios(start_date, end_date, sector)
           .then((response) => {
             updateChartData(response);
             console.log(response);

@@ -43,32 +43,17 @@ export default function QueryParamSelector(props) {
 
   const onHandleSubmitAction = () => {
     console.log(selectedThirdPara);
-    if (queryNumber != "/Analysis/2" && queryNumber != "/Analysis/5") {
-      if (selectedThirdPara !== "" && selectedMinDate < selectedMaxDate) {
-        console.log("truth");
-        onDataRequestedStateChange(
-          true,
-          selectedMinDate,
-          selectedMaxDate,
-          selectedThirdPara
-        );
-      } else {
-        console.log("falsely");
-        onDataRequestedStateChange(false, "", "", "");
-      }
+    if (selectedThirdPara !== "" && selectedMinDate < selectedMaxDate) {
+      console.log("truth");
+      onDataRequestedStateChange(
+        true,
+        selectedMinDate,
+        selectedMaxDate,
+        selectedThirdPara
+      );
     } else {
-      if (selectedThirdPara !== "") {
-        console.log("truth");
-        onDataRequestedStateChange(
-          true,
-          selectedMinDate,
-          selectedMaxDate,
-          selectedThirdPara
-        );
-      } else {
-        console.log("falsely");
-        onDataRequestedStateChange(false, "", "", "");
-      }
+      console.log("falsely");
+      onDataRequestedStateChange(false, "", "", "");
     }
   };
   return (
@@ -81,57 +66,54 @@ export default function QueryParamSelector(props) {
           justifyContent: "space-evenly",
         }}
       >
-        {queryNumber != "/Analysis/2" && queryNumber != "/Analysis/5" ? (
-          <>
-            <DatePicker
-              views={["year"]}
-              label="Start Year"
-              minDate={minDate}
-              maxDate={maxDate}
-              onYearChange={updateMinDate}
-              animateYearScrolling
-              sx={{
-                marginRight: "50px",
-                "& input": {
-                  color: "white",
-                },
-                "& .MuiInputLabel-root": {
-                  color: "white",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "white",
-                },
-                "& .MuiSvgIcon-root": {
-                  color: "white",
-                },
-              }}
-            />
+        <DatePicker
+          views={["year"]}
+          label="Start Year"
+          minDate={minDate}
+          maxDate={maxDate}
+          onYearChange={updateMinDate}
+          animateYearScrolling
+          sx={{
+            marginRight: "50px",
+            "& input": {
+              color: "white",
+            },
+            "& .MuiInputLabel-root": {
+              color: "white",
+            },
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "white",
+            },
+            "& .MuiSvgIcon-root": {
+              color: "white",
+            },
+          }}
+        />
 
-            <DatePicker
-              views={["year"]}
-              label="End Year"
-              minDate={minDate}
-              maxDate={maxDate}
-              onYearChange={updateMaxDate}
-              sx={{
-                marginRight: "50px",
-                "& input": {
-                  color: "white",
-                },
-                "& .MuiInputLabel-root": {
-                  color: "white",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "white",
-                },
-                "& .MuiSvgIcon-root": {
-                  color: "white",
-                },
-              }}
-              animateYearScrolling
-            />
-          </>
-        ) : null}
+        <DatePicker
+          views={["year"]}
+          label="End Year"
+          minDate={minDate}
+          maxDate={maxDate}
+          onYearChange={updateMaxDate}
+          sx={{
+            marginRight: "50px",
+            "& input": {
+              color: "white",
+            },
+            "& .MuiInputLabel-root": {
+              color: "white",
+            },
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "white",
+            },
+            "& .MuiSvgIcon-root": {
+              color: "white",
+            },
+          }}
+          animateYearScrolling
+        />
+
         <FormControl sx={{ width: 300, justifyContent: "center" }}>
           <InputLabel
             id="demo-simple-select-label"

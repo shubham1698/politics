@@ -1,10 +1,12 @@
 import axios from "axios";
 
-export const QueryFiveAxios = (state_name) => {
+export const QueryFiveAxios = (start_date,end_date,state_name) => {
   return new Promise((resolve, reject) => {
     console.log(state_name);
     const queryParams = {
-      state_name: state_name,
+      start_date: start_date.year(),
+      end_date: end_date.year(),
+      state_name: state_name
     };
 
     axios
